@@ -1,0 +1,23 @@
+# Python cache dosyaları
+__pycache__/
+*.py[cod]
+
+# Ortam değişkenleri (.env dosyası)
+.env
+
+# IDE/editor ayarları
+.vscode/
+*.swp
+
+# Sanal ortam klasörleri
+venv/
+env/
+
+# Log dosyaları
+*.log
+
+# Test dosyaları
+**/test_page.py
+**/db_bulk_insert.py
+**/db_test.py
+**/main_old.py

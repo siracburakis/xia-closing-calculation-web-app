@@ -1,0 +1,226 @@
+/* Global Styles */
+html, body {
+    zoom: 0.8;
+    overflow-x: hidden;
+}
+
+/* Layout Grid */
+.app-container {
+    display: grid;
+    grid-template-columns: 200px 1fr;  /* Reduced from 250px */
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+    min-height: 100vh;
+}
+
+/* Body font + transition */
+body {
+    font-size: 0.75rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Header */
+.header {
+    grid-area: header;
+    background-color: #3874c8;
+    color: #ffffff;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.header img {
+    width: 16px;
+    height: 16px;
+}
+
+.header label {
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+/* Sidebar */
+.sidebar {
+    grid-area: sidebar;
+    background-color: #111827;
+    padding: 0.5rem;
+    overflow-y: auto;
+}
+
+/* Main Content */
+.main-content {
+    grid-area: main;
+    padding: 1rem;
+    background-color: #f9fafb;
+}
+
+.main-content {
+    background-color: transparent !important;
+}
+
+/* Footer */
+.footer {
+    grid-area: footer;
+    background-color: #1f2937;
+    color: #ffffff;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Sidebar Buttons */
+.sidebar button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding: 0.4rem 0.8rem;
+    margin-bottom: 0.5rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    font-size: 0.8rem;
+}
+
+.sidebar button:hover {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+.sidebar button.active-link {
+    background-color: #1d4ed8;
+    font-weight: bold;
+}
+
+/* Sidebar buttons in dark mode */
+.dark .sidebar button:hover {
+    background-color: #2563eb;
+}
+
+.dark .sidebar button.active-link {
+    background-color: #1e40af;
+}
+
+/* Tailwind height overrides */
+.h-\[300px\] { height: 240px !important; }
+.h-\[500px\] { height: 400px !important; }
+.h-\[600px\] { height: 480px !important; }
+
+/* Basic font adjustments */
+html, body {
+    font-size: 14px;  /* Base font size */
+}
+
+/* Text size adjustments */
+.text-4xl { font-size: 2rem !important; }     /* 28px */
+.text-3xl { font-size: 1.75rem !important; }  /* 24.5px */
+.text-2xl { font-size: 1.5rem !important; }   /* 21px */
+.text-xl { font-size: 1.25rem !important; }   /* 17.5px */
+.text-lg { font-size: 1.125rem !important; }  /* 15.75px */
+.text-base { font-size: 1rem !important; }    /* 14px */
+.text-sm { font-size: 0.875rem !important; }  /* 12.25px */
+
+/* AG Grid adjustments */
+.ag-root-wrapper {
+    font-size: 14px;
+}
+
+/* AG Grid font size */
+.ag-root {
+    font-size: 0.8rem;
+}
+
+/* Optional: Plotly downscale */
+.js-plotly-plot {
+    transform: scale(0.9);
+}
+
+/* Dark mode support */
+.dark body {
+    background-color: #111827;
+    color: #e5e7eb;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark .header {
+    background-color: #1f2937;
+    border-bottom: 1px solid #374151;
+}
+
+.dark .main-content {
+    background-color: #111827;
+    color: #e5e7eb;
+}
+
+.dark .footer {
+    background-color: #1f2937;
+    border-top: 1px solid #374151;
+}
+
+.dark .sidebar {
+    background-color: #1f2937;
+    border-right: 1px solid #374151;
+}
+
+/* Dark mode cards and inputs */
+.dark .ui-card {
+    background-color: #1f2937;
+    border: 1px solid #374151;
+}
+
+.dark .ui-input,
+.dark .ui-textarea {
+    background-color: #111827;
+    border-color: #374151;
+    color: #e5e7eb;
+}
+
+/* Dark mode tables */
+.dark table {
+    background-color: #1f2937;
+    color: #e5e7eb;
+    border-color: #374151;
+}
+
+.dark th {
+    background-color: #374151;
+    color: #e5e7eb;
+}
+
+.dark td {
+    border-color: #374151;
+}
+
+/* Dark mode buttons */
+.dark button {
+    background-color: #1f2937;
+    color: #e5e7eb;
+    border-color: #374151;
+}
+
+.dark button:hover {
+    background-color: #374151;
+}
+
+/* Dark mode tooltips */
+.dark [role="tooltip"] {
+    background-color: #1f2937;
+    color: #e5e7eb;
+    border: 1px solid #374151;
+}
+
+/* Sidebar dark mode handling */
+.sidebar-drawer {
+    background-color: #ebf1fa;
+    transition: background-color 0.3s ease;
+}
+
+/* Dark mode styles */
+.dark .sidebar-drawer {
+    background-color: #1a1a1a !important;
+}
