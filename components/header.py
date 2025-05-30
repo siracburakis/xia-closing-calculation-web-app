@@ -1,7 +1,7 @@
 from nicegui import ui
 
 dark = ui.dark_mode()
-ui.switch('Dark mode').bind_value(dark)
+ui.switch("Dark mode").bind_value(dark)
 
 def create_header():
     with ui.row().classes("items-center p-1"):

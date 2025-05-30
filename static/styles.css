@@ -1,19 +1,17 @@
 /* Global Styles */
 html, body {
-    zoom: 0.8;
+    zoom: 0.95;
     overflow-x: hidden;
 }
 
 /* Layout Grid */
 .app-container {
     display: grid;
-    grid-template-columns: 200px 1fr;  /* Reduced from 250px */
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas:
-        "header header"
-        "sidebar main"
-        "footer footer";
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: auto 1fr;
     min-height: 100vh;
+    width: 100%;
+    max-width: 100%;
 }
 
 /* Body font + transition */
@@ -48,17 +46,18 @@ body {
     background-color: #111827;
     padding: 0.5rem;
     overflow-y: auto;
+    min-height: calc(100vh - var(--header-height) - var(--footer-height));
+    height: 100%;
 }
 
 /* Main Content */
 .main-content {
     grid-area: main;
-    padding: 1rem;
+    padding: 2rem;
     background-color: #f9fafb;
-}
-
-.main-content {
-    background-color: transparent !important;
+    min-height: calc(100vh - var(--header-height));
+    width: 100%;
+    max-width: 100%;
 }
 
 /* Footer */
@@ -218,9 +217,17 @@ html, body {
 .sidebar-drawer {
     background-color: #ebf1fa;
     transition: background-color 0.3s ease;
+    min-height: 100vh !important;
+    height: auto !important;
 }
 
 /* Dark mode styles */
 .dark .sidebar-drawer {
     background-color: #1a1a1a !important;
+}
+
+/* Add variables for header and footer heights */
+:root {
+    --header-height: 48px;  /* Adjust this value based on your header height */
+    --footer-height: 40px;  /* Adjust this value based on your footer height */
 }

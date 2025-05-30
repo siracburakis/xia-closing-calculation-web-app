@@ -14,9 +14,9 @@ def fetch_data():
     try:
         df = pd.read_sql("SELECT TOP 15 * FROM xiaomi_closing_data", engine)
         # Convert datetime columns to string format
-        for col in df.select_dtypes(include=['datetime64[ns]']).columns:
-            df[col] = df[col].dt.strftime('%Y-%m-%d %H:%M:%S')
-        return df.to_dict('records')
+        for col in df.select_dtypes(include=["datetime64[ns]"]).columns:
+            df[col] = df[col].dt.strftime("%Y-%m-%d %H:%M:%S")
+        return df.to_dict("records")
     except Exception as e:
         print(f"Database connection failed: {e}")
         return []
@@ -27,7 +27,7 @@ def download_excel(df):
     downloads_path = str(Path.home() / "Downloads" / filename)
     
     try:
-        df.to_excel(downloads_path, index=False, engine='openpyxl')
+        df.to_excel(downloads_path, index=False, engine="openpyxl")
         ui.notify(f"Successfully downloaded to {downloads_path}", type="positive")
     except Exception as e:
         ui.notify(f"Error downloading file: {str(e)}", type="negative")
@@ -73,22 +73,22 @@ def show_dashboard():
                     )
 
             grid_options = {
-                'columnDefs': [
-                    {'field': col, 'sortable': True, 'filter': True, 'resizable': True} 
+                "columnDefs": [
+                    {"field": col, "sortable": True, "filter": True, "resizable": True} 
                     for col in df.columns
                 ],
-                'rowData': df.to_dict('records'),
-                'pagination': True,
-                'paginationPageSize': 15,
-                'rowSelection': 'multiple',
-                'domLayout': 'normal',
-                'animateRows': True,
-                'defaultColDef': {
-                    'flex': 1,
-                    'minWidth': 120,
-                    'filter': True,
-                    'sortable': True,
-                    'resizable': True
+                "rowData": df.to_dict("records"),
+                "pagination": True,
+                "paginationPageSize": 15,
+                "rowSelection": "multiple",
+                "domLayout": "normal",
+                "animateRows": True,
+                "defaultColDef": {
+                    "flex": 1,
+                    "minWidth": 120,
+                    "filter": True,
+                    "sortable": True,
+                    "resizable": True
                 }
             }
 
@@ -99,7 +99,7 @@ def show_dashboard():
                 new_df = pd.DataFrame(new_data)
                 if not new_df.empty:
                     # Update Table - Use the correct update syntax
-                    grid.options['rowData'] = new_data
+                    grid.options["rowData"] = new_data
                     grid.update()
                     print("Grid updated with new data.")
 

@@ -19,7 +19,7 @@ def get_column_names():
 def get_closing_tags():
     try:
         df = pd.read_sql("SELECT DISTINCT closing_tag FROM xiaomi_closing_data", engine)
-        return list(df['closing_tag'])
+        return list(df["closing_tag"])
     except Exception as e:
         print(f"Error fetching tags: {e}")
         return []
@@ -32,7 +32,7 @@ def get_current_value(column, tag):
             value = df.iloc[0][0]
             # Convert datetime if needed
             if pd.api.types.is_datetime64_any_dtype(df[column]):
-                value = value.strftime('%Y-%m-%d %H:%M:%S')
+                value = value.strftime("%Y-%m-%d %H:%M:%S")
             return str(value)
         return "No value found"
     except Exception as e:
@@ -44,11 +44,11 @@ def save_changes(column, tag, new_value):
         with engine.begin() as conn:
             query = text(f"UPDATE xiaomi_closing_data SET [{column}] = :val WHERE closing_tag = :tag")
             conn.execute(query, {"val": new_value, "tag": tag})
-        ui.notify("✅ Value updated successfully!", type='positive')
+        ui.notify("✅ Value updated successfully!", type="positive")
         return True
     except Exception as e:
         print(f"Error updating: {e}")
-        ui.notify(f"❌ Error updating value: {e}", type='negative')
+        ui.notify(f"❌ Error updating value: {e}", type="negative")
         return False
 
 # --- Page setup ---
@@ -80,8 +80,8 @@ def show_manual_edit():
                     )
                     if not df.empty:
                         # Convert datetime columns to string format
-                        for col in df.select_dtypes(include=['datetime64[ns]']).columns:
-                            df[col] = df[col].dt.strftime('%Y-%m-%d %H:%M:%S')
+                        for col in df.select_dtypes(include=["datetime64[ns]"]).columns:
+                            df[col] = df[col].dt.strftime("%Y-%m-%d %H:%M:%S")
                         
                         row_preview.columns = [
                             {"name": col, "label": col, "field": col, "align": "left"} 
@@ -94,13 +94,13 @@ def show_manual_edit():
                         row_preview.rows = []
                         row_preview.style("display: none;")
                 except Exception as e:
-                    ui.notify(f"Error loading row: {e}", type='negative')
+                    ui.notify(f"Error loading row: {e}", type="negative")
             else:
                 row_preview.style("display: none;")
 
         # Dropdowns
                 # Dropdowns side by side in a grid
-        with ui.grid(columns=2).classes('w-full gap-4'):  # Changed from row to grid with 2 columns
+        with ui.grid(columns=2).classes("w-full gap-4"):  # Changed from row to grid with 2 columns
             column_select = ui.select(
                 label="Select Column",
                 options=get_column_names(),
@@ -124,7 +124,7 @@ def show_manual_edit():
         # Save
         async def handle_save():
             if not column_select.value or not tag_select.value or not new_value_input.value:
-                ui.notify("⚠️ Please fill all fields", type='warning')
+                ui.notify("⚠️ Please fill all fields", type="warning")
                 return
 
             if save_changes(column_select.value, tag_select.value, new_value_input.value):
