@@ -21,3 +21,7 @@ env/
 **/db_bulk_insert.py
 **/db_test.py
 **/main_old.py
+
+# Dosya yükleme ve indirme klasörleri
+**/downloads/**
+**/uploads/**
